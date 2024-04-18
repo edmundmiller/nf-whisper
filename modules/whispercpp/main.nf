@@ -17,6 +17,7 @@ process WHISPERCPP {
     -m ${model} \\
     -f $audio_file \\
     --output-txt \\
+    --output-file transcription \\
     --no-timestamps
   """
 }
