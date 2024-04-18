@@ -5,8 +5,8 @@ params.youtube_url = ''
 params.model = 'tiny'
 params.outdir = "."
 
-include { DOWNLOAD_AUDIO } from './modules/pytube'
 include { WHISPER; WHISPER_W_TIMESTAMP } from './modules/whisper'
+include { YT_DLP } from './modules/yt-dlp'
 
 process PRINT {
   input:
@@ -51,8 +51,8 @@ workflow {
   } else {
     // If it's a YouTube URL, you must download the video and extract audio
     if (params.youtube_url != '') {
-    DOWNLOAD_AUDIO(params.youtube_url)
-    audio_file = DOWNLOAD_AUDIO.out
+    YT_DLP(params.youtube_url)
+    audio_file = YT_DLP.out
     } else {
       audio_file = params.file
     }

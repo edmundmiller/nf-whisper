@@ -1,0 +1,9 @@
+name: yt_dlp
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - conda-forge::ffmpeg
+  - pip:
+      - yt-dlp
