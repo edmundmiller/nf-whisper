@@ -5,7 +5,7 @@ process WHISPERCPP {
 
   input:
   path audio_file
-  val model
+  path model
 
   output:
   path 'transcription.txt'

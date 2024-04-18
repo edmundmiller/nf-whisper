@@ -57,11 +57,12 @@ workflow {
       audio_file = params.file
     }
 
+    model_file = file("https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-${params.model}.bin?download=true", checkExists: true)
     if (params.timestamp) {
-      WHISPER_W_TIMESTAMP(audio_file, params.model)
+      WHISPER_W_TIMESTAMP(audio_file, model_file)
       PRINT(WHISPER_W_TIMESTAMP.out).view()
     } else {
-      WHISPERCPP(audio_file, params.model)
+      WHISPERCPP(audio_file, model_file)
       PRINT(WHISPERCPP.out).view()
     }
   }
