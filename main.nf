@@ -5,8 +5,8 @@ params.youtube_url = ''
 params.model = 'tiny'
 params.outdir = "."
 
-include { WHISPER; WHISPER_W_TIMESTAMP } from './modules/whisper'
 include { YT_DLP } from './modules/yt-dlp'
+include { WHISPERCPP } from './modules/whispercpp'
 
 process PRINT {
   input:
@@ -61,8 +61,8 @@ workflow {
       WHISPER_W_TIMESTAMP(audio_file, params.model)
       PRINT(WHISPER_W_TIMESTAMP.out).view()
     } else {
-      WHISPER(audio_file, params.model)
-      PRINT(WHISPER.out).view()
+      WHISPERCPP(audio_file, params.model)
+      PRINT(WHISPERCPP.out).view()
     }
   }
 }
