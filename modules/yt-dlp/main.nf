@@ -6,14 +6,14 @@ process YT_DLP {
     val youtube_url
 
     output:
-    path "*.mp4"
+    path "*.wav"
 
     script:
     """
     yt-dlp \\
         --extract-audio \\
-        --audio-format mp4 \\
-        --output audio.mp4 \\
+        --audio-format wav \\
+        --output audio.wav \\
         $youtube_url
     """
 }
