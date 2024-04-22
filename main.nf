@@ -6,6 +6,7 @@ params.model = 'tiny'
 params.outdir = "."
 
 include { YT_DLP } from './modules/yt-dlp'
+include { FFMPEG } from './modules/ffmpeg'
 include { WHISPERCPP } from './modules/whispercpp'
 
 process PRINT {
@@ -52,7 +53,7 @@ workflow {
     // If it's a YouTube URL, you must download the video and extract audio
     if (params.youtube_url != '') {
     YT_DLP(params.youtube_url)
-    audio_file = YT_DLP.out
+    audio_file = YT_DLP.out | FFMPEG
     } else {
       audio_file = params.file
     }

@@ -1,0 +1,7 @@
+name: ffmpeg
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - conda-forge::ffmpeg
