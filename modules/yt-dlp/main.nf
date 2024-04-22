@@ -13,6 +13,7 @@ process YT_DLP {
     yt-dlp \\
         --extract-audio \\
         --audio-format wav \\
+        --audio-quality 16K \\
         --output audio.wav \\
         $youtube_url
     """
